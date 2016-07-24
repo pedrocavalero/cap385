@@ -13,14 +13,16 @@ public class SpringMain {
 		
 		EmployeeService employeeService = ctx.getBean("employeeService", EmployeeService.class);
 		System.out.println(employeeService.getEmployee().getName());
-		employeeService.getEmployee().setName("Pedro Cavaléro");
+		CustomerService customerService = ctx.getBean("customerService", CustomerService.class);
+		System.out.println(customerService.getCustomer().getName());
+		//employeeService.getEmployee().throwException();
+
+// 		setName is annotaded
+//		employeeService.getEmployee().setName("Pedro Cavaléro");
 		
 //		UsageTracked usageTracked = ctx.getBean("employeeService", UsageTracked.class);
 //		System.out.println(usageTracked.getCount());
 
-//		CustomerService customerService = ctx.getBean("customerService", CustomerService.class);
-//		System.out.println(customerService.getCustomer().getName());
-		//employeeService.getEmployee().throwException();
 
 		
 		ctx.close();
