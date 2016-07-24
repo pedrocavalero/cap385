@@ -1,9 +1,6 @@
 package com.pedrocavalero.cap385.exercicio;
 
-import java.util.HashMap;
-import java.util.Map;
-
-public class Product implements PropertiesGetter{
+public class Product{
 	
 	private String name;
 	private String brand;
@@ -40,16 +37,4 @@ public class Product implements PropertiesGetter{
 	public void setCode(String code) {
 		this.code = code;
 	}
-	@Override
-	public Map<String, Object> getPropertiesList() {
-		Map<String,Object> props = new HashMap<String, Object>();
-		props.put("name", name);
-		props.put("brand", brand);
-		props.put("price", price);
-		props.put("code", code);
-		return props;
-	}
-	
-	
-
 }
