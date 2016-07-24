@@ -1,4 +1,4 @@
-package org.cbsoft.framework;
+package com.pedrocavalero.cap385.exercicio;
 
 import java.util.HashMap;
 import java.util.Map;

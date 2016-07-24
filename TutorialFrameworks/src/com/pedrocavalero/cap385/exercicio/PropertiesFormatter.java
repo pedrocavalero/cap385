@@ -1,17 +1,15 @@
-package org.cbsoft.framework;
+package com.pedrocavalero.cap385.exercicio;
 
 import java.util.Map;
 
-public class XMLFormatter implements DataFormatter{
+public class PropertiesFormatter implements DataFormatter {
 
 	@Override
 	public byte[] formatData(Map<String, Object> props) {
 		StringBuilder propFileBuilder = new StringBuilder();
-		propFileBuilder.append("<properties>");
 		for(String prop : props.keySet()){
-			propFileBuilder.append("<"+prop + ">"+props.get(prop)+"</"+prop + ">");
+			propFileBuilder.append(prop + "="+props.get(prop)+"\n");
 		}
-		propFileBuilder.append("</properties>");
 		byte[] bytes = propFileBuilder.toString().getBytes();
 		return bytes;
 	}
