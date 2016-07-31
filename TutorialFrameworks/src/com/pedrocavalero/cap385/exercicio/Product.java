@@ -15,6 +15,7 @@ public class Product{
 		this.code = code;
 		this.secretCode = secretCode;
 	}
+	@Uppercase
 	public String getName() {
 		return name;
 	}
@@ -33,6 +34,7 @@ public class Product{
 	public void setPrice(double price) {
 		this.price = price;
 	}
+	@Prefix("NR#")
 	public String getCode() {
 		return code;
 	}
