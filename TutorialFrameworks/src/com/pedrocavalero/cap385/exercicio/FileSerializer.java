@@ -7,24 +7,28 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FileSerializer {
+public class FileSerializer implements Serializer {
 	
-	private DataFormatter df;
-	private PostProcessor pp;
+	private DataFormatter dataFormatter;
+	private PostProcessor postProcessor;
 
 	
 	public FileSerializer(DataFormatter df, PostProcessor pp) {
 		super();
-		this.df = df;
-		this.pp = pp;
+		this.dataFormatter = df;
+		this.postProcessor = pp;
 	}
 
 
+	/* (non-Javadoc)
+	 * @see com.pedrocavalero.cap385.exercicio.Serializer#generateFile(java.lang.String, java.lang.Object)
+	 */
+	@Override
 	public void generateFile(String filename, Object propGetter) {
-		byte[] bytes = df.formatData(getPropertiesList(propGetter));
+		byte[] bytes = dataFormatter.formatData(getPropertiesList(propGetter));
 		
 	    try {
-	    	bytes = pp.postProcess(bytes);
+	    	bytes = postProcessor.postProcess(bytes);
 			FileOutputStream fileout = new FileOutputStream(filename);
 			fileout.write(bytes);
 			fileout.close();
@@ -77,4 +81,29 @@ public class FileSerializer {
 				&& !m.isAnnotationPresent(DontIncludeOnFile.class);
 	}
 
+
+	@Override
+	public DataFormatter getDataFormatter() {
+		return dataFormatter;
+	}
+
+
+	@Override
+	public void setDataFormatter(DataFormatter dataFormatter) {
+		this.dataFormatter = dataFormatter;
+	}
+
+
+	@Override
+	public PostProcessor getPostProcessor() {
+		return postProcessor;
+	}
+
+
+	@Override
+	public void setPostProcessor(PostProcessor postProcessor) {
+		this.postProcessor = postProcessor;
+	}
+
+	
 }
